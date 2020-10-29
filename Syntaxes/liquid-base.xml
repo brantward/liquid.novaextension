@@ -169,18 +169,6 @@
             <scope name="liquid.identifier.function">
                 <expression>\b(?&lt;!\.)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\()\b</expression>
             </scope>
-            <!-- Tests -->
-            <scope name="liquid.identifier.function" spell-check="false">
-                <strings prefix="\b" suffix="\b" word-boundary="false">
-                    <string>constant</string>
-                    <string>divisible by</string>
-                    <string>divisibleby</string>
-                    <string>same as</string>
-                    <string>sameas</string>
-                    <string>instance of</string>
-                    <string>instanceof</string>
-                </strings>
-            </scope>
             <!-- Regular Identifiers -->
             <scope name="liquid.identifier">
                 <expression>\b[a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*\b</expression>

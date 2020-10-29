@@ -17,6 +17,7 @@
         </behavior>
         <completion string="else" />
         <completion string="elseif" />
+        <completion string="elsif" />
         <completion string="endfor" />
         <completion string="endif" />
         <completion string="for">
