@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completions>
+    <!-- Basic completions outside {% -->
+    <provider>
+        <syntax>liquid</syntax>
+        <selector>*:not(tag,comment)</selector>
+        <expression>([a-zA-Z]*)</expression>
+        <set>liquid.basics</set>
+    </provider>
+    
+    <!-- Full tags for basic completions -->
+    <set name="liquid.basics">
+        <!-- Default: auto complete {% … %} -->
+        <behavior>
+            <prepend>{% </prepend>
+            <append> %}</append>
+        </behavior>
+        <completion string="else" />
+        <completion string="elseif" />
+        <completion string="endfor" />
+        <completion string="endif" />
+        <completion string="for">
+            <behavior>
+                <prepend>{% </prepend>
+                <append> $[a] in $[b] %}$[…]{% endfor %}</append>
+            </behavior>
+        </completion>
+        <completion string="if">
+            <behavior>
+                <prepend>{% </prepend>
+                <append> $[condition] %}$[…]{% endif %}</append>
+            </behavior>
+        </completion>
+        <completion string="render">
+            <behavior>
+                <prepend>{% </prepend>
+                <append> '$[string file]' %}</append>
+            </behavior>
+        </completion>
+        <completion string="render">
+            <behavior>
+                <prepend>{% </prepend>
+                <append> '$[string file]' with $[data] %}</append>
+            </behavior>
+        </completion>
+        <completion string="assign">
+            <behavior>
+                <prepend>{% </prepend>
+                <append> '$[var]' = $[data] %}</append>
+            </behavior>
+        </completion>
+    </set>
+</completions>

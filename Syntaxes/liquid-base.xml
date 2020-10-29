@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="liquid-base" subsyntax="true">
+    <meta>
+        <name>liquid</name>
+        <type>markup</type>
+    </meta>
+
+    <indentation>
+        <increase>
+            <expression>^\s*&lt;(([^!/?]|%)(?!.+?([/%]&gt;|&lt;/.+?&gt;))|[%!]--\s*$)</expression>
+        </increase>
+        <decrease>
+            <expression>^\s*(&lt;/[^&gt;]+&gt;|--&gt;|--%&gt;)</expression>
+        </decrease>
+    </indentation>
+
+    <comments>
+        <multiline>
+            <starts-with>
+                <expression>&lt;!--</expression>
+            </starts-with>
+            <ends-with>
+                <expression>--&gt;</expression>
+            </ends-with>
+        </multiline>
+    </comments>
+
+    <brackets>
+        <pair open="{" close="}" />
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+    </brackets>
+
+    <surrounding-pairs>
+        <pair open="&lt;" close="&gt;" />
+        <pair open="{" close="}" />
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+        <pair open="&apos;" close="&apos;" />
+        <pair open="&quot;" close="&quot;" />
+        <pair open="`" close="`" />
+    </surrounding-pairs>
+
+    <scopes>
+        <include syntax="self" collection="keywords" />
+        <include syntax="self" collection="values" />
+        <include syntax="self" collection="identifiers" />
+        <include syntax="self" collection="syntax" />
+    </scopes>
+    
+    <collections>
+        <!-- Built-in Keywords -->
+        <collection name="keywords">
+            <scope name="liquid.keyword" spell-check="false">
+                <strings prefix="(?&lt;!block|set)\s" suffix="\b" word-boundary="false">
+                    <string>assign</string>
+                    <string>layout</string>
+                    <string>render</string>
+                    <string>block</string>
+                    <string>endblock</string>
+                    <string>for</string>
+                    <string>endfor</string>
+                    <string>from</string>
+                    <string>if</string>
+                    <string>elseif</string>
+                    <string>elsif</string>
+                    <string>else</string>
+                    <string>endif</string>
+                    <string>import</string>
+                    <string>include</string>
+                    <string>with</string>
+                    <string>and</string>
+                    <string>or</string>
+                    <string>not</string>
+                    <string>in</string>
+                    <string>is</string>
+                    <string>as</string>
+                    <string>defined</string>
+                    <string>empty</string>
+                    <string>even</string>
+                    <string>odd</string>
+                    <string>schema</string>
+                    <string>endschema</string>
+                    <string>stylesheet</string>
+                    <string>endstylesheet</string>
+                    <string>javascript</string>
+                    <string>endjavascript</string>
+                    <string>paginate</string>
+                    <string>endpaginate</string>
+                    <string>case</string>
+                    <string>endcase</string>
+                    <string>unless</string>
+                    <string>endunless</string>
+                </strings>
+            </scope>
+        </collection>
+        
+        <!-- Values -->
+        <collection name="values">
+            <scope name="liquid.string.double-quoted">
+                <starts-with>
+                    <expression>&quot;</expression>
+                    <capture number="0" name="liquid.string.double-quoted.delimiter" />
+                </starts-with>
+                <ends-with>
+                    <expression>&quot;|(?:(?&lt;!\\)$)</expression>
+                    <capture number="0" name="liquid.string.double-quoted.delimiter" />
+                </ends-with>
+                <subscopes>
+                    <scope name="liquid.string.double-quoted.escape">
+                        <expression>\\(?:\\|&quot;|n|r|t|b|f)</expression>
+                    </scope>
+                </subscopes>
+            </scope>
+            <scope name="liquid.string.single-quoted">
+                <starts-with>
+                    <expression>&apos;</expression>
+                    <capture number="0" name="liquid.string.single-quoted.delimiter" />
+                </starts-with>
+                <ends-with>
+                    <expression>&apos;|(?:(?&lt;!\\)$)</expression>
+                    <capture number="0" name="liquid.string.single-quoted.delimiter" />
+                </ends-with>
+                <subscopes>
+                    <scope name="liquid.string.single-quoted.escape">
+                        <expression>\\(?:\\|&apos;|n|r|t|b|f)</expression>
+                    </scope>
+                </subscopes>
+            </scope>
+            <scope name="liquid.value.null">
+                <strings>
+                    <string>null</string>
+                </strings>
+            </scope>
+            <scope name="liquid.value.boolean">
+                <strings>
+                    <string>true</string>
+                    <string>false</string>
+                </strings>
+            </scope>
+            <scope name="liquid.value.number">
+                <expression>\b\-?(?:\d+(?:\.\d*)?|(?:\.\d+))\b</expression>
+            </scope>
+        </collection>
+        
+        <!-- Identifiers -->
+        <collection name="identifiers">
+            <!-- Properties in {} -->
+            <scope name="liquid.identifier">
+                <expression>\b([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(\s*\:\s*)</expression>
+                <capture number="1" name="liquid.identifier.property" />
+            </scope>
+            <!-- Object.properties -->
+            <scope name="liquid.identifier">
+                <expression>(\s*\.\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?!\()\b</expression>
+                <capture number="2" name="liquid.identifier.property" />
+            </scope>
+            <!-- Methods -->
+            <scope name="liquid.identifier">
+                <expression>(\s*\.\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\()\b</expression>
+                <capture number="2" name="liquid.identifier.method" />
+            </scope>
+            <!-- Filters -->
+            <scope name="liquid.identifier">
+                <expression>(\s*\|\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)\b</expression>
+                <capture number="2" name="liquid.identifier.method" />
+            </scope>
+            <!-- Functions -->
+            <scope name="liquid.identifier.function">
+                <expression>\b(?&lt;!\.)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\()\b</expression>
+            </scope>
+            <!-- Tests -->
+            <scope name="liquid.identifier.function" spell-check="false">
+                <strings prefix="\b" suffix="\b" word-boundary="false">
+                    <string>constant</string>
+                    <string>divisible by</string>
+                    <string>divisibleby</string>
+                    <string>same as</string>
+                    <string>sameas</string>
+                    <string>instance of</string>
+                    <string>instanceof</string>
+                </strings>
+            </scope>
+            <!-- Regular Identifiers -->
+            <scope name="liquid.identifier">
+                <expression>\b[a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*\b</expression>
+            </scope>
+        </collection>
+        
+        <!-- Syntax -->
+        <collection name="syntax">
+            <scope name="liquid.bracket">
+                <expression>[\(\[\{\)\]\}]</expression>
+            </scope>
+            <scope name="liquid.operator">
+                <expression>(\+|\-|\*|\/|\%|\/\/|\*\*|\=|\~|\&amp;|\^|\=\=|\!\=|&lt;|&gt;|&gt;\=|&lt;\=|\.\.|\?|\?\:|\?\?|\:)</expression>
+            </scope>
+            <scope name="liquid.comma">
+                <expression>,</expression>
+            </scope>
+        </collection>
+    </collections>
+</syntax>

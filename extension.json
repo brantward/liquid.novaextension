@@ -1,0 +1,8 @@
+{
+    "identifier": "braant.liquid",
+    "name": "Liquid",
+    "organization": "braant",
+    "description": "Liquid Syntax Highlighting - Alpha. I have no idea what I'm doing, why hasn't anyone else done this yet?",
+    "version": "1.0-alpha1",
+    "categories": ["languages"]
+}
