@@ -56,6 +56,7 @@
                     <string>assign</string>
                     <string>layout</string>
                     <string>render</string>
+                    <string>section</string>
                     <string>block</string>
                     <string>endblock</string>
                     <string>for</string>
@@ -75,6 +76,7 @@
                     <string>in</string>
                     <string>is</string>
                     <string>as</string>
+                    <string>when</string>
                     <string>defined</string>
                     <string>empty</string>
                     <string>even</string>
@@ -91,6 +93,8 @@
                     <string>endcase</string>
                     <string>unless</string>
                     <string>endunless</string>
+                    <string>capture</string>
+                    <string>endcapture</string>
                 </strings>
             </scope>
         </collection>
