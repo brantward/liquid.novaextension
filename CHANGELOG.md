@@ -1,3 +1,7 @@
+## Version 1.2-alpha1
+
+Syntax keywords updates
+
 ## Version 1.1-alpha1
 
 Syntax keywords updates
