@@ -95,6 +95,8 @@
                     <string>endunless</string>
                     <string>capture</string>
                     <string>endcapture</string>
+                    <string>liquid</string>
+                    <string>echo</string>
                 </strings>
             </scope>
         </collection>
