@@ -97,6 +97,8 @@
                     <string>endcapture</string>
                     <string>liquid</string>
                     <string>echo</string>
+                    <string>break</string>
+                    <string>continue</string>
                 </strings>
             </scope>
         </collection>
