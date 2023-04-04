@@ -57,6 +57,7 @@
                     <string>layout</string>
                     <string>render</string>
                     <string>section</string>
+                    <string>sections</string>
                     <string>block</string>
                     <string>endblock</string>
                     <string>for</string>
@@ -99,6 +100,9 @@
                     <string>echo</string>
                     <string>break</string>
                     <string>continue</string>
+                    <string>cycle</string>
+                    <string>comment</string>
+                    <string>endcomment</string>
                 </strings>
             </scope>
         </collection>

@@ -2,8 +2,8 @@
     "identifier": "braant.liquid",
     "name": "Liquid",
     "organization": "braant",
-    "description": "Liquid Syntax Highlighting - Alpha. I have no idea what I'm doing, why hasn't anyone else done this yet?",
-    "version": "1.3.alpha1",
+    "description": "Liquid Syntax Highlighting. Barely know what I'm doing, I just added this for myself to use.",
+    "version": "1.4.alpha1",
     "categories": ["languages"],
     "license": "MIT",
     "bugs": "https://github.com/brantward/liquid.novaextension/issues"
