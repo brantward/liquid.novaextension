@@ -5,110 +5,216 @@
         <type>markup</type>
     </meta>
 
-    <indentation>
-        <increase>
-            <expression>^\s*&lt;(([^!/?]|%)(?!.+?([/%]&gt;|&lt;/.+?&gt;))|[%!]--\s*$)</expression>
-        </increase>
-        <decrease>
-            <expression>^\s*(&lt;/[^&gt;]+&gt;|--&gt;|--%&gt;)</expression>
-        </decrease>
-    </indentation>
-
-    <comments>
-        <multiline>
-            <starts-with>
-                <expression>&lt;!--</expression>
-            </starts-with>
-            <ends-with>
-                <expression>--&gt;</expression>
-            </ends-with>
-        </multiline>
-    </comments>
-
-    <brackets>
-        <pair open="{" close="}" />
-        <pair open="[" close="]" />
-        <pair open="(" close=")" />
-    </brackets>
-
-    <surrounding-pairs>
-        <pair open="&lt;" close="&gt;" />
-        <pair open="{" close="}" />
-        <pair open="[" close="]" />
-        <pair open="(" close=")" />
-        <pair open="&apos;" close="&apos;" />
-        <pair open="&quot;" close="&quot;" />
-        <pair open="`" close="`" />
-    </surrounding-pairs>
-
     <scopes>
         <include syntax="self" collection="keywords" />
-        <include syntax="self" collection="values" />
-        <include syntax="self" collection="identifiers" />
+        <include syntax="self" collection="operators" />
+        <include syntax="self" collection="objects" />
         <include syntax="self" collection="syntax" />
+        <include syntax="self" collection="identifiers" />
+        <include syntax="self" collection="values" />
     </scopes>
     
     <collections>
-        <!-- Built-in Keywords -->
         <collection name="keywords">
             <scope name="liquid.keyword" spell-check="false">
-                <strings prefix="(?&lt;!block|set)\s" suffix="\b" word-boundary="false">
+                <strings>
                     <string>assign</string>
-                    <string>layout</string>
-                    <string>render</string>
-                    <string>section</string>
-                    <string>sections</string>
                     <string>block</string>
-                    <string>endblock</string>
-                    <string>for</string>
-                    <string>endfor</string>
-                    <string>from</string>
-                    <string>if</string>
-                    <string>elseif</string>
-                    <string>elsif</string>
-                    <string>else</string>
-                    <string>endif</string>
-                    <string>import</string>
-                    <string>include</string>
-                    <string>with</string>
-                    <string>and</string>
-                    <string>or</string>
-                    <string>not</string>
-                    <string>in</string>
-                    <string>is</string>
-                    <string>as</string>
-                    <string>when</string>
-                    <string>defined</string>
-                    <string>empty</string>
-                    <string>even</string>
-                    <string>odd</string>
-                    <string>schema</string>
-                    <string>endschema</string>
-                    <string>stylesheet</string>
-                    <string>endstylesheet</string>
-                    <string>javascript</string>
-                    <string>endjavascript</string>
-                    <string>paginate</string>
-                    <string>endpaginate</string>
-                    <string>case</string>
-                    <string>endcase</string>
-                    <string>unless</string>
-                    <string>endunless</string>
+                    <string>break</string>
                     <string>capture</string>
                     <string>endcapture</string>
-                    <string>liquid</string>
-                    <string>echo</string>
-                    <string>break</string>
-                    <string>continue</string>
-                    <string>cycle</string>
+                    <string>case</string>
+                    <string>endcase</string>
                     <string>comment</string>
                     <string>endcomment</string>
+                    <string>continue</string>
+                    <string>cycle</string>
+                    <string>decrement</string>
+                    <string>echo</string>
+                    <string>else</string>
+                    <string>elsif</string>
+                    <string>for</string>
+                    <string>endfor</string>
+                    <string>form</string>
+                    <string>endform</string>
+                    <string>if</string>
+                    <string>endif</string>
+                    <string>increment</string>
+                    <string>javascript</string>
+                    <string>endjavascript</string>
+                    <string>layout</string>
+                    <string>liquid</string>
+                    <string>paginate</string>
+                    <string>endpaginate</string>
+                    <string>raw</string>
+                    <string>endraw</string>
+                    <string>render</string>
+                    <string>schema</string>
+                    <string>endschema</string>
+                    <string>section</string>
+                    <string>sections</string>
+                    <string>style</string>
+                    <string>endstyle</string>
+                    <string>stylesheet</string>
+                    <string>endstylesheet</string>
+                    <string>tablerow</string>
+                    <string>endtablerow</string>
+                    <string>unless</string>
+                    <string>endunless</string>
+                    <string>when</string>
                 </strings>
             </scope>
+        </collection>
+
+        <collection name="operators">
+            <scope name="liquid.operator" spell-check="false">
+                <strings>
+                    <string>=</string>
+                    <string>==</string>
+                    <string>!=</string>
+                    <string>&lt;</string>
+                    <string>&gt;</string>
+                    <string>&lt;=</string>
+                    <string>&gt;=</string>
+                    <string>or</string>
+                    <string>and</string>
+                    <string>contains</string>
+                </strings>
+            </scope>
+        </collection>
+
+        <collection name="objects">
+            <scope name="liquid.object" spell-check="false">
+                <strings>
+                    <string>additional_checkout_buttons</string>
+                    <string>address</string>
+                    <string>all_country_option_tags</string>
+                    <string>all_products</string>
+                    <string>article</string>
+                    <string>articles</string>
+                    <string>block</string>
+                    <string>blog</string>
+                    <string>blogs</string>
+                    <string>canonical_url</string>
+                    <string>cart</string>
+                    <string>checkout</string>
+                    <string>collection</string>
+                    <string>collections</string>
+                    <string>comment</string>
+                    <string>content_for_additional_checkout_buttons</string>
+                    <string>content_for_header</string>
+                    <string>content_for_index</string>
+                    <string>content_for_layout</string>
+                    <string>country_option_tags</string>
+                    <string>currency</string>
+                    <string>current_page</string>
+                    <string>current_tags</string>
+                    <string>customer</string>
+                    <string>customer_address</string>
+                    <string>discount_allocation</string>
+                    <string>discount_application</string>
+                    <string>external_video</string>
+                    <string>font</string>
+                    <string>forloop</string>
+                    <string>form</string>
+                    <string>fulfillment</string>
+                    <string>gift_card</string>
+                    <string>handle</string>
+                    <string>image</string>
+                    <string>images</string>
+                    <string>line_item</string>
+                    <string>link</string>
+                    <string>linklist</string>
+                    <string>linklists</string>
+                    <string>location</string>
+                    <string>localization</string>
+                    <string>metafield</string>
+                    <string>model</string>
+                    <string>model_source</string>
+                    <string>order</string>
+                    <string>page</string>
+                    <string>page_description</string>
+                    <string>page_image</string>
+                    <string>page_title</string>
+                    <string>pages</string>
+                    <string>paginate</string>
+                    <string>part</string>
+                    <string>policy</string>
+                    <string>powered_by_link</string>
+                    <string>predictive_search </string>
+                    <string>product</string>
+                    <string>product_option</string>
+                    <string>product_variant</string>
+                    <string>recommendations</string>
+                    <string>request</string>
+                    <string>routes</string>
+                    <string>script</string>
+                    <string>scripts</string>
+                    <string>search</string>
+                    <string>section</string>
+                    <string>selling_plan</string>
+                    <string>selling_plan_allocation</string>
+                    <string>selling_plan_group</string>
+                    <string>settings</string>
+                    <string>shipping_method</string>
+                    <string>shop</string>
+                    <string>shop_locale</string>
+                    <string>store_availability</string>
+                    <string>tablerow</string>
+                    <string>tax_line</string>
+                    <string>template</string>
+                    <string>theme</string>
+                    <string>transaction</string>
+                    <string>unit_price_measurement</string>
+                    <string>variant</string>
+                    <string>video</string>
+                    <string>video_source</string>
+                </strings>
+            </scope>
+        </collection>
+
+        <!-- Identifiers -->
+        <collection name="identifiers">
+            <!-- json -->
+            <scope name="liquid.identifier">
+                <expression>("[a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*")(\s*\:\s)</expression>
+                <capture number="1" name="liquid.identifier.property" />
+                <capture number="2" name="liquid.operator" />
+            </scope>
+            <!-- Methods -->
+            <scope name="liquid.identifier">
+                <expression>(\s*\.\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\()\b</expression>
+                <capture number="2" name="liquid.identifier.method" />
+            </scope>
+            <!-- Filters -->
+            <scope name="liquid.identifier">
+                <expression>(\s*\|\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)\b</expression>
+                <capture number="2" name="liquid.identifier.method" />
+            </scope>
+            <!-- Properties in {} -->
+            <scope name="liquid.identifier">
+                <expression>\b([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(\s*\:\s*)</expression>
+                <capture number="1" name="liquid.identifier.property" />
+                <capture number="2" name="liquid.operator" />
+            </scope>
+            <!-- Object.properties -->
+            <scope name="liquid.identifier">
+                <expression>(\s*\.\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?!\()\b</expression>
+                <capture number="2" name="liquid.identifier.property" />
+            </scope>
+            <!-- Functions -->
+            <scope name="liquid.identifier.function">
+                <expression>\b(?&lt;!\.)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\()\b</expression>
+            </scope>
+            <!-- Regular Identifiers -->
+            <!-- <scope name="liquid.identifier">
+                <expression>\b[a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*\b</expression>
+            </scope> -->
         </collection>
         
         <!-- Values -->
         <collection name="values">
+            
             <scope name="liquid.string.double-quoted">
                 <starts-with>
                     <expression>&quot;</expression>
@@ -155,45 +261,13 @@
             </scope>
         </collection>
         
-        <!-- Identifiers -->
-        <collection name="identifiers">
-            <!-- Properties in {} -->
-            <scope name="liquid.identifier">
-                <expression>\b([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(\s*\:\s*)</expression>
-                <capture number="1" name="liquid.identifier.property" />
-            </scope>
-            <!-- Object.properties -->
-            <scope name="liquid.identifier">
-                <expression>(\s*\.\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?!\()\b</expression>
-                <capture number="2" name="liquid.identifier.property" />
-            </scope>
-            <!-- Methods -->
-            <scope name="liquid.identifier">
-                <expression>(\s*\.\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\()\b</expression>
-                <capture number="2" name="liquid.identifier.method" />
-            </scope>
-            <!-- Filters -->
-            <scope name="liquid.identifier">
-                <expression>(\s*\|\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)\b</expression>
-                <capture number="2" name="liquid.identifier.method" />
-            </scope>
-            <!-- Functions -->
-            <scope name="liquid.identifier.function">
-                <expression>\b(?&lt;!\.)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\()\b</expression>
-            </scope>
-            <!-- Regular Identifiers -->
-            <scope name="liquid.identifier">
-                <expression>\b[a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*\b</expression>
-            </scope>
-        </collection>
-        
         <!-- Syntax -->
         <collection name="syntax">
             <scope name="liquid.bracket">
                 <expression>[\(\[\{\)\]\}]</expression>
             </scope>
             <scope name="liquid.operator">
-                <expression>(\+|\-|\*|\/|\%|\/\/|\*\*|\=|\~|\&amp;|\^|\=\=|\!\=|&lt;|&gt;|&gt;\=|&lt;\=|\.\.|\?|\?\:|\?\?|\:)</expression>
+                <expression>(\+|\-|\*|\/|\%|\/\/|\*\*|\=|\~|\&amp;|\^|\=\=|\!\=|&lt;|&gt;|&gt;\=|&lt;\=|\.\.|\?|\?\:|\?\?|\:|\|)</expression>
             </scope>
             <scope name="liquid.comma">
                 <expression>,</expression>

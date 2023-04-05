@@ -3,7 +3,7 @@
     "name": "Liquid",
     "organization": "braant",
     "description": "Liquid Syntax Highlighting. Barely know what I'm doing, I just added this for myself to use.",
-    "version": "1.4.alpha1",
+    "version": "1.5.alpha1",
     "categories": ["languages"],
     "license": "MIT",
     "bugs": "https://github.com/brantward/liquid.novaextension/issues"

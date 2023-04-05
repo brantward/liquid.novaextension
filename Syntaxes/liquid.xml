@@ -11,34 +11,6 @@
         <extension priority="1.0">liquid</extension>
     </detectors>
 
-    <indentation>
-        <increase>
-            <expression>(?x)
-                (&lt;(?!\?|(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)\b)
-                ([-_\.A-Za-z0-9]+)(?=\s|&gt;)\b[^&gt;]*&gt;[^&lt;]*$)
-                |(&lt;!--\s*$)
-            </expression>
-        </increase>
-        <decrease>
-            <expression>(?x)
-                ^\s*
-                (&lt;/[-_\.A-Za-z0-9]+\b[^>]*&gt;
-                |--&gt;
-            )</expression>
-        </decrease>
-    </indentation>
-
-    <comments>
-        <multiline>
-            <starts-with>
-                <expression>&lt;!--</expression>
-            </starts-with>
-            <ends-with>
-                <expression>--&gt;</expression>
-            </ends-with>
-        </multiline>
-    </comments>
-
     <brackets>
         <pair open="[" close="]" />
         <pair open="(" close=")" />
@@ -54,19 +26,57 @@
     </surrounding-pairs>
 
     <scopes spell-check="true" lookup="dictionary">
-        <scope name="liquid.comment.block" spell-check="true">
-            <starts-with>
-                <expression>{%-?\s*comment\s*-?%}</expression>
-            </starts-with>
-            <ends-with>
-                <expression>{%-?\s*endcomment\s*-?%}</expression>
-            </ends-with>
-        </scope>
-
         <include syntax="html" />
     </scopes>
 
     <template-scopes>
+        <scope name="liquid.comment.block" spell-check="true">
+            <starts-with>
+                <expression>(\{\%\-?)\s*(comment)\s*(\-?\%\})</expression>
+                <capture number="0" name="liquid.tag.framework.expression.start" />
+                <capture number="2" name="liquid.keyword" />
+            </starts-with>
+            <ends-with>
+                <expression>(?=\{\%\-?\s*endcomment\s*\-?\%\})</expression>
+            </ends-with>
+        </scope>
+        
+        <scope name="liquid.tag.framework" spell-check="false" lookup="index">
+            <symbol type="tag-framework">
+                <context behavior="subtree" group-by-name="true" />
+            </symbol>
+            <starts-with>
+                <expression>(\{\%\-?)\s*(style)\s*(\-?\%\})</expression>
+                <capture number="2" name="liquid.keyword" />
+            </starts-with>
+            <ends-with>
+                <expression>(?=\{\%\-?\s*endstyle\s*\-?\%\})</expression>
+            </ends-with>
+            <subsyntax name="liquid-css" noncontiguous="true" export-symbols="true">
+                <cut-off>
+                    <expression>(?=\{\%\-?\s*endstyle\s*\-?\%\})</expression>
+                </cut-off>
+            </subsyntax>
+        </scope>
+        
+        <scope name="liquid.tag.framework" spell-check="false" lookup="index">
+            <symbol type="tag-framework">
+                <context behavior="subtree" group-by-name="true" />
+            </symbol>
+            <starts-with>
+                <expression>(\{\%\-?)\s*(schema)\s*(\-?\%\})</expression>
+                <capture number="2" name="liquid.keyword" />
+            </starts-with>
+            <ends-with>
+                <expression>(?=\{\%\-?\s*endschema\s*\-?\%\})</expression>
+            </ends-with>
+            <subsyntax name="liquid-base" noncontiguous="true" export-symbols="true">
+                <cut-off>
+                    <expression>(?=\{\%\-?\s*endschema\s*\-?\%\})</expression>
+                </cut-off>
+            </subsyntax>
+        </scope>
+
         <scope name="liquid.tag.framework" spell-check="false" lookup="index">
             <symbol type="tag-framework">
                 <context behavior="subtree" group-by-name="true" />
