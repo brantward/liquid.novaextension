@@ -6,5 +6,7 @@
     "version": "1.5.alpha1",
     "categories": ["languages"],
     "license": "MIT",
-    "bugs": "https://github.com/brantward/liquid.novaextension/issues"
+    "repository": "https://github.com/brantward/liquid.novaextension",
+    "bugs": "https://github.com/brantward/liquid.novaextension/issues",
+    "funding": "https://www.paypal.com/donate/?hosted_button_id=SNFHCDZS3LNMG",
 }
