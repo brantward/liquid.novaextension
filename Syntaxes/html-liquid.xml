@@ -36,14 +36,11 @@
     </comments>
 
     <scopes>
-        <include syntax="liquid-base" collection="embeds" />
-        <include syntax="liquid-base" collection="tags" />
-        <include syntax="liquid-base" collection="comments" />
         <include syntax="html" collection="*" />
     </scopes>
     <template-scopes>
         <include syntax="liquid-base" collection="embeds" />
-        <include syntax="liquid-base" collection="tags" />
         <include syntax="liquid-base" collection="comments" />
+        <include syntax="liquid-base" collection="tags" />
     </template-scopes>
 </syntax>

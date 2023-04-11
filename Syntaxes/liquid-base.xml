@@ -20,36 +20,16 @@
 
         <!-- !Comments -->
         <collection name="comments">
-            <scope name="liquid.comment.block" spell-check="false" lookup="documentation">
+            <scope name="liquid.comment.block" spell-check="true">
                 <starts-with>
-                    <expression>(?=\{\%\-?\s*(?i:comment)\b)</expression>
+                    <expression>(\{\%\-?)\s*(comment)\s*(\-?\%\})</expression>
+                    <capture number="0" name="liquid.tag.framework.comment.start" />
+                    <capture number="2" name="liquid.keyword" />
                 </starts-with>
                 <ends-with>
-                    <expression>(?=\{\%\-?\s*(?i:endcomment)\b)</expression>
+                    <expression>(?=\{\%\-?\s*endcomment\s*\-?\%\})</expression>
+                    <capture number="0" name="liquid.tag.framework.comment.end" />
                 </ends-with>
-                <subscopes anchored="true" skip-whitespace="false">
-                    <symbol type="tag-script">
-                        <context behavior="start" group-by-name="true">
-                            <auto-close string="{%" completion="end${name} %}" />
-                        </context>
-                    </symbol>
-                    <scope name="liquid.tag.style.open">
-                        <starts-with>
-                            <expression>\/?{%</expression>
-                        </starts-with>
-                        <ends-with>
-                            <expression>\/?%}</expression>
-                        </ends-with>
-                    </scope>
-                    <scope name="liquid.comment.block.content" optional="true">
-                        <starts-with>
-                            <expression>(?&lt;=%})</expression>
-                        </starts-with>
-                        <ends-with>
-                            <expression>(?=\{\%\-?\s*(?i:endcomment)\b)</expression>
-                        </ends-with>
-                    </scope>
-                </subscopes>
             </scope>
         </collection>
         
