@@ -3,7 +3,7 @@
     "name": "Liquid",
     "organization": "braant",
     "description": "Shopify's Liquid Syntax Highlighting.",
-    "version": "1.7.1",
+    "version": "1.7.2",
     "categories": ["languages"],
     "keywords": ["shopify", "liquid", "syntax"],
     "license": "MIT",
