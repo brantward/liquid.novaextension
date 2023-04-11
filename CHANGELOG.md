@@ -1,3 +1,8 @@
+## Version 1.7.2
+
+- Extensions for scss.liquid, css.liquid, and js.liquid
+- More highlighting for embedded {% schema %}, {% style %}, {% stylesheet %}, {% javascript %}
+
 ## Version 1.5-alpha1
 
 - Fixed highlighting for json within {% schema %} tags, and css within {% style %} tags.

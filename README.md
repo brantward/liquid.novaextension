@@ -1,3 +1,3 @@
-## Liquid Syntax Highlighting for Nova
+## Shopify's Liquid Syntax Highlighting
 
-Writing and maintaining this for personal use. I'm slowly fumbling my way around how this works so bare with me.
+Writing and maintaining this for personal use. Pleeease feel free to contribute some updates.
