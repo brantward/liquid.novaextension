@@ -2,11 +2,17 @@
     "identifier": "braant.liquid",
     "name": "Liquid",
     "organization": "braant",
-    "description": "Liquid Syntax Highlighting. Barely know what I'm doing, I just added this for myself to use.",
-    "version": "1.6.alpha1",
+    "description": "Shopify's Liquid Syntax Highlighting.",
+    "version": "1.0",
     "categories": ["languages"],
+    "keywords": ["shopify", "liquid", "syntax"],
     "license": "MIT",
     "repository": "https://github.com/brantward/liquid.novaextension",
     "bugs": "https://github.com/brantward/liquid.novaextension/issues",
-    "funding": "https://www.paypal.com/donate/?hosted_button_id=SNFHCDZS3LNMG"
+    "funding": "https://www.paypal.com/donate/?hosted_button_id=SNFHCDZS3LNMG",
+    "activationEvents": [
+        "onLanguage:liquid",
+        "onLanguage:css.liquid",
+        "onLanguage:js.liquid"
+    ]
 }
