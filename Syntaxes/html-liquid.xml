@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="html-liquid">
+    <meta>
+        <name>Liquid</name>
+        <type>markup</type>
+        <preferred-file-extension>liquid</preferred-file-extension>
+        <parent>html</parent>
+    </meta>
+    
+    <detectors>
+        <extension priority="1.0">liquid</extension>
+    </detectors>
+
+    <brackets>
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+    </brackets>
+
+    <surrounding-pairs>
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+        <pair open="'" close="'" />
+        <pair open="\" close="\" />
+        <pair open="`" close="`" />
+    </surrounding-pairs>
+
+    <comments>
+        <multiline>
+            <starts-with>
+                <expression>{% comment %}</expression>
+            </starts-with>
+            <ends-with>
+                <expression>{% endcomment %}</expression>
+            </ends-with>
+        </multiline>
+    </comments>
+
+    <scopes>
+        <include syntax="liquid-base" collection="embeds" />
+        <include syntax="liquid-base" collection="tags" />
+        <include syntax="liquid-base" collection="comments" />
+        <include syntax="html" collection="*" />
+    </scopes>
+    <template-scopes>
+        <include syntax="liquid-base" collection="embeds" />
+        <include syntax="liquid-base" collection="tags" />
+        <include syntax="liquid-base" collection="comments" />
+    </template-scopes>
+</syntax>

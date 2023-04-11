@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <syntax name="liquid-base" subsyntax="true">
     <meta>
-        <name>liquid</name>
+        <name>Liquid</name>
         <type>markup</type>
     </meta>
 
@@ -10,14 +10,219 @@
         <include syntax="self" collection="operators" />
         <include syntax="self" collection="objects" />
         <include syntax="self" collection="syntax" />
+        <include syntax="self" collection="other_tags" />
         <include syntax="self" collection="identifiers" />
         <include syntax="self" collection="values" />
+        <include syntax="self" collection="inline_comments" />
     </scopes>
     
     <collections>
+
+        <!-- !Comments -->
+        <collection name="comments">
+            <scope name="liquid.comment.block" spell-check="false" lookup="documentation">
+                <starts-with>
+                    <expression>(?=\{\%\-?\s*(?i:comment)\b)</expression>
+                </starts-with>
+                <ends-with>
+                    <expression>(?=\{\%\-?\s*(?i:endcomment)\b)</expression>
+                </ends-with>
+                <subscopes anchored="true" skip-whitespace="false">
+                    <symbol type="tag-script">
+                        <context behavior="start" group-by-name="true">
+                            <auto-close string="{%" completion="end${name} %}" />
+                        </context>
+                    </symbol>
+                    <scope name="liquid.tag.style.open">
+                        <starts-with>
+                            <expression>\/?{%</expression>
+                        </starts-with>
+                        <ends-with>
+                            <expression>\/?%}</expression>
+                        </ends-with>
+                    </scope>
+                    <scope name="liquid.comment.block.content" optional="true">
+                        <starts-with>
+                            <expression>(?&lt;=%})</expression>
+                        </starts-with>
+                        <ends-with>
+                            <expression>(?=\{\%\-?\s*(?i:endcomment)\b)</expression>
+                        </ends-with>
+                    </scope>
+                </subscopes>
+            </scope>
+        </collection>
+        
+        <!-- !Inline Comments -->
+        <collection name="inline_comments">
+            <scope name="liquid.comment.single" spell-check="true">
+                <expression>\#(.*)$</expression>
+                <capture number="1" name="liquid.comment.content" />
+            </scope>
+        </collection>
+        
+        <!-- !Embedded -->
+        <collection name="embeds">
+            <scope name="liquid.embedded.schema" spell-check="false" lookup="documentation">
+                <starts-with>
+                    <expression>(?=\{\%\-?\s*(?i:schema)\b)</expression>
+                </starts-with>
+                <ends-with />
+                <subscopes anchored="true" skip-whitespace="false">
+                    <symbol type="liquid-tag">
+                        <context behavior="start" group-by-name="true">
+                            <auto-close string="{%" completion="end${name} %}" />
+                        </context>
+                    </symbol>
+                    <scope name="liquid.tag.framework.schema.open">
+                        <starts-with>
+                            <expression>(\/?{%)\s*(?i:(schema))</expression>
+                            <capture number="1" name="liquid.tag.framework.expression.start" />
+                            <capture number="2" name="liquid.keyword" />
+                        </starts-with>
+                        <ends-with>
+                            <expression>\/?%}</expression>
+                            <capture number="0" name="liquid.tag.framework.expression.end" />
+                        </ends-with>
+                    </scope>
+                    <scope name="liquid.embedded.schema.content" optional="true">
+                        <starts-with>
+                            <expression>(?&lt;=%})</expression>
+                        </starts-with>
+                        <ends-with>
+                            <expression>(?=\{\%\-?\s*(?i:endschema)\b)</expression>
+                        </ends-with>
+                        <subsyntax name="liquid-base">
+                            <cut-off>
+                                <expression>(?=\{\%\-?\s*(?i:endschema)\b)</expression>
+                            </cut-off>
+                        </subsyntax>
+                    </scope>
+                </subscopes>
+            </scope>
+        
+            <scope name="liquid.embedded.style" spell-check="false" lookup="documentation">
+                <starts-with>
+                    <expression>(?=\{\%\-?\s*(?i:style|stylesheet)\b)</expression>
+                </starts-with>
+                <ends-with />
+                <subscopes anchored="true" skip-whitespace="false">
+                    <symbol type="liquid-tag">
+                        <context behavior="start" group-by-name="true">
+                            <auto-close string="{%" completion="end${name} %}" />
+                        </context>
+                    </symbol>
+                    <scope name="liquid.tag.framework.style.open">
+                        <starts-with>
+                            <expression>(\/?{%\-?)\s*(?i:(style|stylesheet))</expression>
+                            <capture number="1" name="liquid.tag.framework.expression.start" />
+                            <capture number="2" name="liquid.keyword" />
+                        </starts-with>
+                        <ends-with>
+                            <expression>\-?\/?%}</expression>
+                            <capture number="0" name="liquid.tag.framework.expression.end" />
+                        </ends-with>
+                    </scope>
+                    <scope name="liquid.embedded.style.content" optional="true">
+                        <starts-with>
+                            <expression>(?&lt;=%})</expression>
+                        </starts-with>
+                        <ends-with>
+                            <expression>(?=\{\%\-?\s*(?i:endstyle|endstylesheet)\b)</expression>
+                        </ends-with>
+                        <subsyntax name="css-liquid">
+                            <cut-off>
+                                <expression>(?=\{\%\-?\s*(?i:endstyle|endstylesheet)\b)</expression>
+                            </cut-off>
+                        </subsyntax>
+                    </scope>
+                </subscopes>
+            </scope>
+        
+            <scope name="liquid.embedded.script" spell-check="false" lookup="documentation">
+                <starts-with>
+                    <expression>(?=\{\%\-?\s*(?i:javascript)\b)</expression>
+                </starts-with>
+                <ends-with />
+                <subscopes anchored="true" skip-whitespace="false">
+                    <symbol type="liquid-tag">
+                        <context behavior="start" group-by-name="true">
+                            <auto-close string="{%" completion="end${name} %}" />
+                        </context>
+                    </symbol>
+                    <scope name="liquid.tag.framework.script.open">
+                        <starts-with>
+                            <expression>(\/?{%\-?)\s*(?i:(javascript))</expression>
+                            <capture number="1" name="liquid.tag.framework.expression.start" />
+                            <capture number="2" name="liquid.keyword" />
+                        </starts-with>
+                        <ends-with>
+                            <expression>\-?\/?%}</expression>
+                            <capture number="0" name="liquid.tag.framework.expression.end" />
+                        </ends-with>
+                    </scope>
+                    <scope name="liquid.embedded.script.content" optional="true">
+                        <starts-with>
+                            <expression>(?&lt;=%})</expression>
+                        </starts-with>
+                        <ends-with>
+                            <expression>(?=\{\%\-?\s*(?i:endjavascript)\b)</expression>
+                        </ends-with>
+                        <subsyntax name="javascript-liquid">
+                            <cut-off>
+                                <expression>(?=\{\%\-?\s*(?i:endjavascript)\b)</expression>
+                            </cut-off>
+                        </subsyntax>
+                    </scope>
+                </subscopes>
+            </scope>
+        </collection>
+        
+        <!-- !Tags -->
+        <collection name="tags" override="true">
+            <scope name="liquid.tag.framework.variable" spell-check="false">
+                <symbol type="liquid-tag">
+                    <context behavior="subtree" group-by-name="true" />
+                </symbol>
+                <starts-with>
+                    <expression>({{)(-)?</expression>
+                    <capture number="0" name="liquid.tag.framework.variable.start" override="true" />
+                </starts-with>
+                <ends-with>
+                    <expression>(-)?(}})</expression>
+                    <capture number="0" name="liquid.tag.framework.variable.end" />
+                </ends-with>
+                <subsyntax name="liquid-base">
+                    <cut-off>
+                        <expression>(?=(-)?(}}))</expression>
+                    </cut-off>
+                </subsyntax>
+            </scope>
+        
+            <scope name="liquid.tag.framework.expression" spell-check="false" lookup="index">
+                <symbol type="liquid-tag">
+                    <context behavior="subtree" group-by-name="true" />
+                </symbol>
+                <starts-with>
+                    <expression>({%)(-)?</expression>
+                    <capture number="0" name="liquid.tag.framework.expression.start" />
+                </starts-with>
+                <ends-with>
+                    <expression>(-)?(%})</expression>
+                    <capture number="0" name="liquid.tag.framework.expression.end" />
+                </ends-with>
+                <subsyntax name="liquid-base">
+                    <cut-off>
+                        <expression>(?=(-)?(%}))</expression>
+                    </cut-off>
+                </subsyntax>
+            </scope>
+        </collection>
+
         <collection name="keywords">
             <scope name="liquid.keyword" spell-check="false">
                 <strings>
+                    <string>as</string>
                     <string>assign</string>
                     <string>block</string>
                     <string>break</string>
@@ -39,6 +244,7 @@
                     <string>endform</string>
                     <string>if</string>
                     <string>endif</string>
+                    <string>in</string>
                     <string>increment</string>
                     <string>javascript</string>
                     <string>endjavascript</string>
@@ -62,6 +268,7 @@
                     <string>unless</string>
                     <string>endunless</string>
                     <string>when</string>
+                    <string>with</string>
                 </strings>
             </scope>
         </collection>
@@ -189,6 +396,7 @@
             <!-- Filters -->
             <scope name="liquid.identifier">
                 <expression>(\s*\|\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)\b</expression>
+                <capture number="1" name="liquid.operator" />
                 <capture number="2" name="liquid.identifier.method" />
             </scope>
             <!-- Properties in {} -->
@@ -200,21 +408,17 @@
             <!-- Object.properties -->
             <scope name="liquid.identifier">
                 <expression>(\s*\.\s*)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?!\()\b</expression>
+                <capture number="1" name="liquid.operator" />
                 <capture number="2" name="liquid.identifier.property" />
             </scope>
             <!-- Functions -->
             <scope name="liquid.identifier.function">
                 <expression>\b(?&lt;!\.)([a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*)(?=\()\b</expression>
             </scope>
-            <!-- Regular Identifiers -->
-            <!-- <scope name="liquid.identifier">
-                <expression>\b[a-zA-Z_][A-Za-zÀ-ÖØ-öø-ÿ0-9_]*\b</expression>
-            </scope> -->
         </collection>
         
         <!-- Values -->
         <collection name="values">
-            
             <scope name="liquid.string.double-quoted">
                 <starts-with>
                     <expression>&quot;</expression>
@@ -261,10 +465,10 @@
             </scope>
         </collection>
         
-        <!-- Syntax -->
+        <!-- !Syntax -->
         <collection name="syntax">
             <scope name="liquid.bracket">
-                <expression>[\(\[\{\)\]\}]</expression>
+                <expression>[\{\(\[\)\]\}]</expression>
             </scope>
             <scope name="liquid.operator">
                 <expression>(\+|\-|\*|\/|\%|\/\/|\*\*|\=|\~|\&amp;|\^|\=\=|\!\=|&lt;|&gt;|&gt;\=|&lt;\=|\.\.|\?|\?\:|\?\?|\:|\|)</expression>

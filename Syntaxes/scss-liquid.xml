@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="scss-liquid">
+    <meta>
+        <name>SCSS Liquid</name>
+        <type>stylesheet</type>
+        <preferred-file-extension>scss.liquid</preferred-file-extension>
+        <parent>scss</parent>
+    </meta>
+    
+    <detectors>
+        <extension priority="1.0">scss.liquid</extension>
+    </detectors>
+    
+    <brackets>
+        <pair open="{" close="}" />
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+    </brackets>
+    
+    <surrounding-pairs>
+        <pair open="\{\{" close="\}\}" />
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+        <pair open="'" close="'" />
+        <pair open="\" close="\" />
+        <pair open="`" close="`" />
+    </surrounding-pairs>
+    
+    <identifiers>
+        <characters>
+            <alphanumeric />
+            <string>-_</string>
+        </characters>
+        <prefixes>
+            <string>#</string>
+        </prefixes>
+    </identifiers>
+    
+    <indentation>
+        <increase>
+            <expression>(\{[^}\"']*$)|(\[[^\]\"']*$)|(\([^)\"']*$)</expression>
+        </increase>
+        <decrease>
+            <expression>^\s*(\s*/\*.*\*/\s*)*[\}\]\)\\]</expression>
+        </decrease>
+    </indentation>
+    
+    <comments>
+        <multiline>
+            <starts-with>
+                <expression>/*</expression>
+            </starts-with>
+            <ends-with>
+                <expression>*/</expression>
+            </ends-with>
+        </multiline>
+    </comments>
+    
+    <scopes>
+        <include syntax="liquid-base" collection="tags" />
+        <include syntax="liquid-base" collection="comments" />
+        <include syntax="scss" collection="*" />
+    </scopes>
+    <template-scopes>
+        <include syntax="liquid-base" collection="tags" />
+        <include syntax="liquid-base" collection="comments" />
+    </template-scopes>
+</syntax>
