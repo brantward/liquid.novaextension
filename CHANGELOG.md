@@ -1,3 +1,7 @@
+## Version 1.7.3
+
+- Comments fix
+
 ## Version 1.7.2
 
 - Extensions for scss.liquid, css.liquid, and js.liquid
