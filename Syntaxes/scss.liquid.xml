@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<syntax name="javascript-liquid">
+<syntax name="scss.liquid">
     <meta>
-        <name>JavaScript Liquid</name>
+        <name>Liquid (SCSS)</name>
         <type>stylesheet</type>
-        <preferred-file-extension>js.liquid</preferred-file-extension>
-        <parent>javascript</parent>
+        <preferred-file-extension>scss.liquid</preferred-file-extension>
+        <parent>scss</parent>
     </meta>
     
     <detectors>
-        <extension priority="1.0">js.liquid</extension>
+        <extension priority="1.0">scss.liquid</extension>
     </detectors>
     
     <brackets>
@@ -25,6 +25,12 @@
         <pair open="`" close="`" />
     </surrounding-pairs>
     
+    <identifiers>
+        <prefixes>
+            <string>#$</string>
+        </prefixes>
+    </identifiers>
+    
     <indentation>
         <increase>
             <expression>(\{[^}\"']*$)|(\[[^\]\"']*$)|(\([^)\"']*$)</expression>
@@ -35,9 +41,6 @@
     </indentation>
     
     <comments>
-        <single>
-            <expression>//</expression>
-        </single>
         <multiline>
             <starts-with>
                 <expression>/*</expression>
@@ -46,10 +49,20 @@
                 <expression>*/</expression>
             </ends-with>
         </multiline>
+        <single>
+            <expression>//</expression>
+        </single>
     </comments>
     
     <scopes>
-        <include syntax="liquid-base" collection="tags" override="true" />
-        <include syntax="javascript" collection="*" override="false" />
+        <include syntax="liquid-core" collection="tags" />
+        <include syntax="scss" collection="*" />
     </scopes>
+    
+    <collections>
+        <collection name="comments" override="true">
+            <include syntax="css" collection="comments" />
+            <include syntax="liquid-core" collection="tags" />
+        </collection>
+    </collections>
 </syntax>

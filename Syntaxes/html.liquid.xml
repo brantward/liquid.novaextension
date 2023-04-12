@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<syntax name="html-liquid">
+<syntax name="html.liquid">
     <meta>
         <name>Liquid</name>
         <type>markup</type>
@@ -39,8 +39,8 @@
         <include syntax="html" collection="*" />
     </scopes>
     <template-scopes>
-        <include syntax="liquid-base" collection="embeds" />
-        <include syntax="liquid-base" collection="comments" />
-        <include syntax="liquid-base" collection="tags" />
+        <include syntax="liquid-core" collection="embeds" />
+        <include syntax="liquid-core" collection="comments" />
+        <include syntax="liquid-core" collection="tags" />
     </template-scopes>
 </syntax>

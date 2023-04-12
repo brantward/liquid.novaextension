@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<syntax name="css-liquid">
+<syntax name="css.liquid">
     <meta>
-        <name>CSS Liquid</name>
+        <name>Liquid (CSS)</name>
         <type>stylesheet</type>
         <preferred-file-extension>css.liquid</preferred-file-extension>
         <parent>css</parent>
@@ -56,12 +56,16 @@
     </comments>
     
     <scopes>
-        <include syntax="liquid-base" collection="tags" />
-        <include syntax="liquid-base" collection="comments" />
+        <include syntax="liquid-core" collection="tags" />
+        <include syntax="self" collection="comments" />
+        <include syntax="css" collection="attribute-lists" />
         <include syntax="css" collection="*" />
     </scopes>
-    <template-scopes>
-        <include syntax="liquid-base" collection="tags" />
-        <include syntax="liquid-base" collection="comments" />
-    </template-scopes>
+    
+    <collections>
+        <collection name="comments" override="true">
+            <include syntax="css" collection="comments" />
+            <include syntax="liquid-core" collection="tags" />
+        </collection>
+    </collections>
 </syntax>

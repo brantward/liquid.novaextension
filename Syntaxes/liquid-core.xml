@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<syntax name="liquid-base" subsyntax="true">
+<syntax name="liquid-core" subsyntax="true">
     <meta>
         <name>Liquid</name>
-        <type>markup</type>
     </meta>
 
     <scopes>
@@ -72,7 +71,7 @@
                         <ends-with>
                             <expression>(?=\{\%\-?\s*(?i:endschema)\b)</expression>
                         </ends-with>
-                        <subsyntax name="liquid-base">
+                        <subsyntax name="liquid-core">
                             <cut-off>
                                 <expression>(?=\{\%\-?\s*(?i:endschema)\b)</expression>
                             </cut-off>
@@ -110,7 +109,7 @@
                         <ends-with>
                             <expression>(?=\{\%\-?\s*(?i:endstyle|endstylesheet)\b)</expression>
                         </ends-with>
-                        <subsyntax name="css-liquid">
+                        <subsyntax name="css.liquid">
                             <cut-off>
                                 <expression>(?=\{\%\-?\s*(?i:endstyle|endstylesheet)\b)</expression>
                             </cut-off>
@@ -148,7 +147,7 @@
                         <ends-with>
                             <expression>(?=\{\%\-?\s*(?i:endjavascript)\b)</expression>
                         </ends-with>
-                        <subsyntax name="javascript-liquid">
+                        <subsyntax name="js.liquid">
                             <cut-off>
                                 <expression>(?=\{\%\-?\s*(?i:endjavascript)\b)</expression>
                             </cut-off>
@@ -172,7 +171,7 @@
                     <expression>(-)?(}})</expression>
                     <capture number="0" name="liquid.tag.framework.variable.end" />
                 </ends-with>
-                <subsyntax name="liquid-base">
+                <subsyntax name="liquid-core">
                     <cut-off>
                         <expression>(?=(-)?(}}))</expression>
                     </cut-off>
@@ -191,7 +190,7 @@
                     <expression>(-)?(%})</expression>
                     <capture number="0" name="liquid.tag.framework.expression.end" />
                 </ends-with>
-                <subsyntax name="liquid-base">
+                <subsyntax name="liquid-core">
                     <cut-off>
                         <expression>(?=(-)?(%}))</expression>
                     </cut-off>
@@ -451,10 +450,7 @@
                 <expression>[\{\(\[\)\]\}]</expression>
             </scope>
             <scope name="liquid.operator">
-                <expression>(\+|\-|\*|\/|\%|\/\/|\*\*|\=|\~|\&amp;|\^|\=\=|\!\=|&lt;|&gt;|&gt;\=|&lt;\=|\.\.|\?|\?\:|\?\?|\:|\|)</expression>
-            </scope>
-            <scope name="liquid.comma">
-                <expression>,</expression>
+                <expression>(\+|\-|\*|\/|\%|\/\/|\*\*|\=|\~|\&amp;|\^|\=\=|\!\=|&lt;|&gt;|&gt;\=|&lt;\=|\.\.|\?|\?\:|\?\?|\:|\,|\|)</expression>
             </scope>
         </collection>
     </collections>
