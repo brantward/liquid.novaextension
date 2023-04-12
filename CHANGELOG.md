@@ -1,3 +1,8 @@
+## Version 1.7.4
+
+- Filename changes to assist detecting extensions
+- Re-ordered a few parent scopes to fix minor highlighting issues
+
 ## Version 1.7.3
 
 - Comments fix
