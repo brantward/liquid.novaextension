@@ -9,7 +9,6 @@
         <include syntax="self" collection="operators" />
         <include syntax="self" collection="objects" />
         <include syntax="self" collection="syntax" />
-        <include syntax="self" collection="other_tags" />
         <include syntax="self" collection="identifiers" />
         <include syntax="self" collection="values" />
         <include syntax="self" collection="inline_comments" />
@@ -198,6 +197,7 @@
             </scope>
         </collection>
 
+        <!-- !Keywords -->
         <collection name="keywords">
             <scope name="liquid.keyword" spell-check="false">
                 <strings>
@@ -252,6 +252,7 @@
             </scope>
         </collection>
 
+        <!-- !Operators -->
         <collection name="operators">
             <scope name="liquid.operator" spell-check="false">
                 <strings>
@@ -269,6 +270,7 @@
             </scope>
         </collection>
 
+        <!-- !Objects -->
         <collection name="objects">
             <scope name="liquid.object" spell-check="false">
                 <strings>
@@ -359,7 +361,7 @@
             </scope>
         </collection>
 
-        <!-- Identifiers -->
+        <!-- !Identifiers -->
         <collection name="identifiers">
             <!-- json -->
             <scope name="liquid.identifier">
@@ -396,7 +398,7 @@
             </scope>
         </collection>
         
-        <!-- Values -->
+        <!-- !Values -->
         <collection name="values">
             <scope name="liquid.string.double-quoted">
                 <starts-with>
@@ -453,5 +455,6 @@
                 <expression>(\+|\-|\*|\/|\%|\/\/|\*\*|\=|\~|\&amp;|\^|\=\=|\!\=|&lt;|&gt;|&gt;\=|&lt;\=|\.\.|\?|\?\:|\?\?|\:|\,|\|)</expression>
             </scope>
         </collection>
+
     </collections>
 </syntax>
