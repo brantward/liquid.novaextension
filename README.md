@@ -1,3 +1,8 @@
-## Shopify's Liquid Syntax Highlighting
+# Liquid Syntax Highlighting
 
-Writing and maintaining this for personal use. Please feel free to contribute.
+Syntax highlighting for Shopify's Liquid, built for Nova.
+
+## Notes
+
+- Built and maintained for personal use
+- Contributions welcome
