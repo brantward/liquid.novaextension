@@ -54,6 +54,8 @@
   "paginate"
   "raw"
   "schema"
+  "section"
+  "sections"
   "style"
   "tablerow"
   "unless"
@@ -89,11 +91,16 @@
 ((boolean) @liquid.value.boolean)
 ((number) @liquid.value.number)
 
-; Predicate operator (e.g., `==`, `!=`)
+; Predicate operators (e.g., ==, !=)
 (predicate operator: _ @liquid.operator)
 
-; Filter function names
+; Filters
 (filter name: (identifier) @liquid.identifier.function)
 
+; Accessors and arguments
+(access property: (identifier) @liquid.identifier.property)
+(argument key: (identifier) @liquid.identifier.key)
+(argument value: (identifier) @liquid.identifier.variable)
+
 ; Comments
-((comment) @liquid.comment.block)
+((comment) @liquid.comment)
