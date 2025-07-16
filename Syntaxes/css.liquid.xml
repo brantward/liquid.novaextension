@@ -55,6 +55,11 @@
         </multiline>
     </comments>
     
+    <tree-sitter language="liquid">
+        <highlights />
+        <injections path="injections-css.scm" />
+    </tree-sitter>
+    
     <scopes>
         <include syntax="liquid-core" collection="tags" />
         <include syntax="self" collection="comments" />

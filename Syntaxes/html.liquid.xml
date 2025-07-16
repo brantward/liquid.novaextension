@@ -23,7 +23,7 @@
         <pair open="\" close="\" />
         <pair open="`" close="`" />
     </surrounding-pairs>
-
+    
     <comments>
         <multiline>
             <starts-with>
@@ -35,6 +35,11 @@
         </multiline>
     </comments>
 
+    <tree-sitter language="liquid">
+        <highlights />
+        <injections />
+    </tree-sitter>
+
     <scopes>
         <include syntax="html" collection="*" />
     </scopes>
@@ -43,4 +48,5 @@
         <include syntax="liquid-core" collection="comments" />
         <include syntax="liquid-core" collection="tags" />
     </template-scopes>
+    
 </syntax>

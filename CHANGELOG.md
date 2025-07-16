@@ -1,3 +1,7 @@
+## Version 1.8
+
+- Tree Sitter Support
+
 ## Version 1.7.4
 
 - Filename changes to assist detecting extensions

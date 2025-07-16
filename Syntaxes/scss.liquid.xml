@@ -54,6 +54,11 @@
         </single>
     </comments>
     
+    <tree-sitter language="liquid">
+        <highlights />
+        <injections path="injections-scss.scm" />
+    </tree-sitter>
+    
     <scopes>
         <include syntax="liquid-core" collection="tags" />
         <include syntax="scss" collection="*" />
