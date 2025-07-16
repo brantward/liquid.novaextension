@@ -42,6 +42,7 @@
   "endraw"
   "endschema"
   "endstyle"
+  "endstylesheet"
   "endtablerow"
   "endunless"
   "for"
@@ -57,6 +58,7 @@
   "section"
   "sections"
   "style"
+  "stylesheet"
   "tablerow"
   "unless"
   "when"
@@ -70,6 +72,11 @@
   "endcapture"
   "include"
   "render"
+  "content_for"
+  "content_for_additional_checkout_buttons"
+  "content_for_header"
+  "content_for_index"
+  "content_for_layout"
 ] @liquid.keyword.construct)
 
 ; Modifiers
