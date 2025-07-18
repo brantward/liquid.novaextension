@@ -1,18 +1,19 @@
 {
-    "identifier": "braant.liquid",
-    "name": "Liquid",
-    "organization": "braant",
-    "description": "Syntax highlighting for Shopify's Liquid, built for Nova.",
-    "version": "1.8.2",
-    "categories": ["languages"],
-    "keywords": ["shopify", "liquid", "syntax"],
-    "license": "MIT",
-    "repository": "https://github.com/brantward/liquid.novaextension",
-    "bugs": "https://github.com/brantward/liquid.novaextension/issues",
-    "funding": "https://www.paypal.com/donate/?hosted_button_id=SNFHCDZS3LNMG",
-    "activationEvents": [
-        "onLanguage:liquid",
-        "onLanguage:css.liquid",
-        "onLanguage:js.liquid"
-    ]
+  "identifier": "braant.liquid",
+  "name": "Liquid",
+  "organization": "braant",
+  "description": "Syntax highlighting for Shopify's Liquid, built for Nova.",
+  "version": "1.8.3",
+  "categories": ["languages"],
+  "keywords": ["shopify", "liquid", "syntax"],
+  "license": "MIT",
+  "repository": "https://github.com/brantward/liquid.novaextension",
+  "bugs": "https://github.com/brantward/liquid.novaextension/issues",
+  "funding": "https://www.paypal.com/donate/?hosted_button_id=SNFHCDZS3LNMG",
+  "activationEvents": [
+    "onLanguage:liquid",
+    "onLanguage:css.liquid",
+    "onLanguage:scss.liquid",
+    "onLanguage:js.liquid"
+  ]
 }

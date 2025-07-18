@@ -1,6 +1,19 @@
+## Version 1.8.3
+
+- Highlights for double brackets fixed for injected syntax
+
+## Version 1.8.2
+
+- New icon. doesn't seem to be a recognised logo for liquid anymore
+- More highlight additions
+
+## Version 1.8.1
+
+- Highlight additions
+
 ## Version 1.8
 
-- Tree Sitter Support
+- Tree-sitter Support
 
 ## Version 1.7.4
 

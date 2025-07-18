@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <syntax name="css.liquid">
     <meta>
         <name>Liquid (CSS)</name>
@@ -12,7 +12,6 @@
     </detectors>
     
     <brackets>
-        <pair open="{" close="}" />
         <pair open="[" close="]" />
         <pair open="(" close=")" />
     </brackets>
