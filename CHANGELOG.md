@@ -1,3 +1,8 @@
+## Version 1.8.4
+
+- Highlight additions
+- Added color assistant 😬
+
 ## Version 1.8.3
 
 - Highlights for double brackets fixed for injected syntax
