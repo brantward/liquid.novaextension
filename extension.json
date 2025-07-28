@@ -3,7 +3,7 @@
   "name": "Liquid",
   "organization": "braant",
   "description": "Syntax highlighting for Shopify's Liquid, built for Nova.",
-  "version": "1.8.4",
+  "version": "1.8.5",
   "categories": ["languages"],
   "keywords": ["shopify", "liquid", "syntax"],
   "license": "MIT",

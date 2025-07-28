@@ -1,22 +1,22 @@
 (
   (template_content) @injection.content
   (#set! injection.language "html")
-  (#set! injection.reset "true")
   (#set! injection.combined)
+  (#set! injection.reset "true")
 )
 
 (
   (style_content) @injection.content
   (#set! injection.language "css")
-  (#set! injection.reset "true")
   (#set! injection.combined)
+  (#set! injection.reset "true")
 )
 
 (
   (js_content) @injection.content
   (#set! injection.language "javascript")
-  (#set! injection.reset "true")
   (#set! injection.combined)
+  (#set! injection.reset "true")
 )
 
 (
