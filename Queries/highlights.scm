@@ -104,10 +104,10 @@
 ((comment) @liquid.comment)
 
 ; LiquidDoc
-((doc_statement) @liquid.comment)
-((doc_tag) @liquid.identifier.function)
-((doc_key) @liquid.identifier.key)
-((doc_type) @liquid.identifier.argument)
+((doc_statement) @liquid.doc.comment)
+((doc_tag) @liquid.doc.tag)
+((doc_type) @liquid.doc.tag.attribute.name)
+((doc_key) @liquid.doc.tag.attribute.value)
 
 
 ; Syntax Errors
