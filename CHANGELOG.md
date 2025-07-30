@@ -1,3 +1,11 @@
+## Version 1.8.6
+
+- Tree-sitter updates for LiquidDoc
+
+## Version 1.8.5
+
+- Color assistant fixes
+
 ## Version 1.8.4
 
 - Highlight additions
