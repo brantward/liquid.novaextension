@@ -102,7 +102,13 @@
 
 ; Comments
 ((comment) @liquid.comment)
-(doc_statement (template_content) @liquid.comment)
+
+; LiquidDoc
+((doc_statement) @liquid.comment)
+((doc_tag) @liquid.identifier.function)
+((doc_key) @liquid.identifier.key)
+((doc_type) @liquid.identifier.argument)
+
 
 ; Syntax Errors
 (ERROR [

@@ -22,5 +22,13 @@
 (
   (json_content) @injection.content
   (#set! injection.language "json")
+  (#set! injection.combined)
+  (#set! injection.reset "true")
+)
+
+(
+  (doc_example (doc_textline) @injection.content)
+  (#set! injection.language "html.liquid")
+  (#set! injection.combined)
   (#set! injection.reset "true")
 )
