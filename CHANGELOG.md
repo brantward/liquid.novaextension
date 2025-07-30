@@ -1,3 +1,7 @@
+## Version 1.8.7
+
+- Highlight updates
+
 ## Version 1.8.6
 
 - Tree-sitter updates for LiquidDoc
